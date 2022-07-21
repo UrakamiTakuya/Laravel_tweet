@@ -1,2 +1,1 @@
-# Laravel_environment
 # README
