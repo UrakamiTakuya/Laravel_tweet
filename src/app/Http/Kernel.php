@@ -13,6 +13,7 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
+    /* アプリケーション全体に作用させたいミドルウェアを登録する。 */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -53,6 +54,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
+    /* 特定のルートのついてもの作用させたいミドルウェアを登録するとき */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
