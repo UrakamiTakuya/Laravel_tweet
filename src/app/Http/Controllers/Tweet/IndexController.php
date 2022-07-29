@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Tweet;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Tweet;
-use App\Services\TweetService;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -15,11 +14,9 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, TweetService $tweetService)
+    public function __invoke(Request $request)
     {
-        $tweets = $tweetService->getTweets();
-        // TweetのEloquentモデルに依存している
-        // $tweets = Tweet::orderBy('created_at', 'DESC')->get();
+        $tweets = Tweet::orderBy('created_at', 'DESC')->get();
         return view('tweet.index')
             ->with('tweets', $tweets);
     }
