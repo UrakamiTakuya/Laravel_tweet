@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Tweet\update;
+namespace App\Http\Controllers\Tweet\Update;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Tweet;
 use App\Services\TweetService;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class IndexController extends Controller
@@ -20,9 +20,9 @@ class IndexController extends Controller
     {
         $tweetId = (int) $request->route('tweetId');
         if (!$tweetService->checkOwnTweet($request->user()->id, $tweetId)) {
-            // Laravelが403エラーページを生成して表示してくれる
             throw new AccessDeniedHttpException();
         }
+
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
         return view('tweet.update')->with('tweet', $tweet);
     }

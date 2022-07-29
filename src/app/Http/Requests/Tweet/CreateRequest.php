@@ -36,7 +36,6 @@ class CreateRequest extends FormRequest
 
     public function tweet(): string
     {
-        // フォームから投稿されたデータをデータベースに反映。
-        return $this->input('tweet');
+    return $this->input('tweet');
     }
 }

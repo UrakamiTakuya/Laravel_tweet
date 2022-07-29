@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Tweet\update;
+namespace App\Http\Controllers\Tweet\Update;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\Tweet\UpdateRequest;
 use App\Models\Tweet;
 use App\Services\TweetService;
@@ -26,7 +25,6 @@ class PutController extends Controller
         $tweet->content = $request->tweet();
         $tweet->save();
         return redirect()
-            // tweetIdをrouterに渡す。
             ->route('tweet.update.index', ['tweetId' => $tweet->id])
             ->with('feedback.success', "つぶやきを編集しました");
     }
